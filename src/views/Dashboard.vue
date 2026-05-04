@@ -11,7 +11,7 @@
       <p class="text-lg mb-5">Pogoda today</p>
       <div class="border-3 rounded-xl border-black mb-2">
         <div class="p-2 flex">
-          <img alt="rain" :src="`/src/assets/${getRainImage(data.precipitation)}`" />
+          <img alt="rain" :src="`@/assets/${getRainImage(data.precipitation)}`" />
 
           <p class="pl-10">Prec: {{ data.precipitation }} mm</p>
         </div>
