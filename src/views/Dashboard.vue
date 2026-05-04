@@ -1,0 +1,114 @@
+<template>
+  <div v-if="loading">Am loading</div>
+  <div v-else-if="error">{{ error }}</div>
+  <div
+    v-else-if="data"
+    class="border-3 border-blue-black rounded-xl bg-blue-500 justify-items-center items-center m-20 bg-blue-400 p-10 border-3 border-blue-black rounded-xl"
+  >
+    <div
+      class="justify-items-center items-center flex flex-col border-3 border-blue-black rounded-xl p-10 bg-blue-400"
+    >
+      <p class="text-lg mb-5">Pogoda today</p>
+      <div class="border-3 rounded-xl border-black mb-2">
+        <div class="p-2 flex">
+          <img alt="rain" :src="`/src/assets/${getRainImage(data.precipitation)}`" />
+
+          <p class="pl-10">Prec: {{ data.precipitation }} mm</p>
+        </div>
+
+        <div class="p-2 flex border-3 border-x-blue-500">
+          <img alt="temperature" :src="`/src/assets/${getTempImage(data.temperature_2m)}`" />
+
+          <p class="pl-10">Temp: {{ data.temperature_2m }} °C</p>
+        </div>
+
+        <div class="p-2 flex">
+          <div>
+            <img :src="`/src/assets/${getWindImage(data.wind_speed_10m)}`" alt="wind" />
+          </div>
+
+          <p class="pl-10">Wind: {{ data.wind_speed_10m }} Km/h</p>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="justify-items-center items-center flex flex-col border-3 border-blue-black rounded-xl p-10 bg-blue-400 mt-5"
+    >
+      <p class="text-lg mb-5">PROGNOZ POGODI</p>
+      <table class="border-5 border-black rounded-xl">
+        <tr class="">
+          <th>Temp.max image :</th>
+          <th v-for="value in prog.temperature_2m_max">
+            <img
+              alt="temperature"
+              :src="`/src/assets/${getTempImage(value)}`"
+              class="border-2 border-black"
+            />
+          </th>
+        </tr>
+
+        <tr class="border-2 border-black">
+          <th>Temp max:</th>
+          <th v-for="value in prog.temperature_2m_max" class="border-2 border-black">
+            {{ value }}
+          </th>
+        </tr>
+
+        <tr class="border-2 border-black">
+          <th>Temp min:</th>
+          <th v-for="value in prog.temperature_2m_min" class="border-2 border-black">
+            {{ value }}
+          </th>
+        </tr>
+
+        <tr>
+          <th>Prec:</th>
+          <th v-for="value in prog.precipitation_sum" class="border-2 border-black">{{ value }}</th>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div v-else>Mistake</div>
+</template>
+
+<script setup>
+import { useWeather } from '@/composables/Weather.js'
+import { onMounted } from 'vue'
+
+let { data, prog, error, loading, fetchWeather } = useWeather()
+onMounted(() => {
+  fetchWeather()
+})
+
+function getRainImage(what) {
+  if (what > 50) {
+    return 'rain.png'
+  } else if (what > 25) {
+    return 'cloud.png'
+  } else {
+    return 'sun.png'
+  }
+}
+
+function getTempImage(what) {
+  if (what > 20) {
+    return 'temperature_hot.png'
+  } else if (what > 10) {
+    return 'temperature_medium.png'
+  } else {
+    return 'temperature_cold.png'
+  }
+}
+
+function getWindImage(what) {
+  if (what > 25) {
+    return 'strong_wind.png'
+  } else if (what > 10) {
+    return 'wind.png'
+  } else {
+    return 'weak_wind.png'
+  }
+}
+</script>
