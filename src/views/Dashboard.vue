@@ -11,20 +11,20 @@
       <p class="text-lg mb-5">Pogoda today</p>
       <div class="border-3 rounded-xl border-black mb-2">
         <div class="p-2 flex">
-          <img alt="rain" :src="`/public/${getRainImage(data.precipitation)}`" />
+          <img alt="rain" :src="`/icon/${getRainImage(data.precipitation)}`" />
 
           <p class="pl-10">Prec: {{ data.precipitation }} mm</p>
         </div>
 
         <div class="p-2 flex border-3 border-x-blue-500">
-          <img alt="temperature" :src="`/public/${getTempImage(data.temperature_2m)}`" />
+          <img alt="temperature" :src="`/icon/${getTempImage(data.temperature_2m)}`" />
 
           <p class="pl-10">Temp: {{ data.temperature_2m }} °C</p>
         </div>
 
         <div class="p-2 flex">
           <div>
-            <img :src="`/public/${getWindImage(data.wind_speed_10m)}`" alt="wind" />
+            <img :src="`/icon/${getWindImage(data.wind_speed_10m)}`" alt="wind" />
           </div>
 
           <p class="pl-10">Wind: {{ data.wind_speed_10m }} Km/h</p>
@@ -42,7 +42,7 @@
           <th v-for="value in prog.temperature_2m_max">
             <img
               alt="temperature"
-              :src="`/public/${getTempImage(value)}`"
+              :src="`/icon/${getTempImage(value)}`"
               class="border-2 border-black"
             />
           </th>
