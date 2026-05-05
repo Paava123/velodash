@@ -1,5 +1,3 @@
-<template>
-  <p>Mapa</p>
-</template>
+<template></template>
 
 <script setup></script>

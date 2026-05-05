@@ -1,13 +1,15 @@
 <template>
-  <div class="flex flex-row">
-    <div class="flex flex-col float-left p-2 border-black border-3 bg-blue-400">
-      <h1 class="text-red-800">Total Km ->{{ rideStore.totalKM }}</h1>
-      <h1 class="text-red-800">Total Time ->{{ rideStore.totalTime }}</h1>
+  <div class="grid grid-cols-3 gap-5 w-9/10 m-auto mt-10">
+    <div
+      class="flex flex-col float-left p-4 border-4 bg-blue-300 border-cyan-400 dark:bg-blue-900 dark:border-cyan-800"
+    >
+      <h1 class="">Total Km ->{{ rideStore.totalKM }}</h1>
+      <h1 class="">Total Time ->{{ rideStore.totalTime }}</h1>
     </div>
 
     <div
       v-for="value in rideStore.rides"
-      class="flex flex-col p-2 border-black border-3 text-lg"
+      class="flex flex-col bg-blue-300 border-cyan-400 border-4 text-lg rounded-2xl p-4 dark:bg-blue-900 dark:border-cyan-800"
       :key="value.id"
     >
       <!-- obj -->
@@ -52,14 +54,14 @@
 
       <button
         @click="deleteRide(value.id)"
-        class="flex flex-col items-center border-3 border-blue-black bg-blue-500 hover:bg-blue-400 duration-250 ease-in mb-2"
+        class="flex flex-col items-center border-3 hover:bg-blue-500 duration-250 ease-in mb-2 border-4 bg-blue-400 border-cyan-400 dark:bg-sky-800 dark:border-cyan-900 hover:dark:bg-cyan-800"
       >
         Delete
       </button>
       <button
         v-if="value.id !== EditingID"
         @click="editor(value.id)"
-        class="flex flex-col items-center border-3 border-blue-black bg-blue-500 hover:bg-blue-400 duration-250 ease-in mb-2"
+        class="flex flex-col items-center border-3 hover:bg-blue-500 duration-250 ease-in mb-2 border-4 bg-blue-400 border-cyan-400 dark:bg-sky-800 dark:border-cyan-900 hover:dark:bg-cyan-800"
       >
         Edit
       </button>
@@ -67,7 +69,7 @@
       <button
         v-else
         @click="save()"
-        class="flex flex-col items-center border-3 border-blue-black bg-blue-500 hover:bg-blue-400 duration-250 ease-in mb-2"
+        class="flex flex-col items-center border-3 hover:bg-blue-500 duration-250 ease-in mb-2 border-4 bg-blue-400 border-cyan-400 dark:bg-sky-800 dark:border-cyan-900 hover:dark:bg-cyan-800"
       >
         Save
       </button>

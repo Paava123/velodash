@@ -1,12 +1,9 @@
 <template>
   <div v-if="loading">Am loading</div>
   <div v-else-if="error">{{ error }}</div>
-  <div
-    v-else-if="data"
-    class="border-3 border-blue-black rounded-xl bg-blue-500 justify-items-center items-center m-20 bg-blue-400 p-10 border-3 border-blue-black rounded-xl"
-  >
+  <div v-else-if="data" class="grid grid-cols-3 justify-items-center items-center mt-10">
     <div
-      class="justify-items-center items-center flex flex-col border-3 border-blue-black rounded-xl p-10 bg-blue-400"
+      class="justify-items-center items-center flex flex-col border-3 rounded-xl p-10 bg-blue-400 dark:bg-blue-900 border-cyan-400 dark:border-cyan-800"
     >
       <p class="text-lg mb-5">Pogoda today</p>
       <div class="border-3 rounded-xl border-black mb-2">
@@ -16,7 +13,7 @@
           <p class="pl-10">Prec: {{ data.precipitation }} mm</p>
         </div>
 
-        <div class="p-2 flex border-3 border-x-blue-500">
+        <div class="p-2 flex">
           <img alt="temperature" :src="`/icon/${getTempImage(data.temperature_2m)}`" />
 
           <p class="pl-10">Temp: {{ data.temperature_2m }} °C</p>
@@ -33,38 +30,49 @@
     </div>
 
     <div
-      class="justify-items-center items-center flex flex-col border-3 border-blue-black rounded-xl p-10 bg-blue-400 mt-5"
+      class="justify-items-center items-center flex flex-col border-3 rounded-xl p-10 bg-blue-400 mt-5 dark:bg-blue-900 border-cyan-400 dark:border-cyan-800"
     >
       <p class="text-lg mb-5">PROGNOZ POGODI</p>
-      <table class="border-5 border-black rounded-xl">
+      <table class="border-5 border-cyan-400 dark:border-cyan-800">
         <tr class="">
           <th>Temp.max image :</th>
           <th v-for="value in prog.temperature_2m_max">
             <img
               alt="temperature"
               :src="`/icon/${getTempImage(value)}`"
-              class="border-2 border-black"
+              class="border-2 border-cyan-400 dark:border-cyan-800"
             />
           </th>
         </tr>
 
-        <tr class="border-2 border-black">
+        <tr class="border-2 border-cyan-400 dark:border-cyan-800">
           <th>Temp max:</th>
-          <th v-for="value in prog.temperature_2m_max" class="border-2 border-black">
+          <th
+            v-for="value in prog.temperature_2m_max"
+            class="border-2 border-cyan-400 dark:border-cyan-800"
+          >
             {{ value }}
           </th>
         </tr>
 
-        <tr class="border-2 border-black">
+        <tr class="border-2 border-cyan-400 dark:border-cyan-800">
           <th>Temp min:</th>
-          <th v-for="value in prog.temperature_2m_min" class="border-2 border-black">
+          <th
+            v-for="value in prog.temperature_2m_min"
+            class="border-2 border-cyan-400 dark:border-cyan-800"
+          >
             {{ value }}
           </th>
         </tr>
 
         <tr>
           <th>Prec:</th>
-          <th v-for="value in prog.precipitation_sum" class="border-2 border-black">{{ value }}</th>
+          <th
+            v-for="value in prog.precipitation_sum"
+            class="border-2 border-cyan-400 dark:border-cyan-800"
+          >
+            {{ value }}
+          </th>
         </tr>
       </table>
     </div>
