@@ -108,9 +108,7 @@ function Save() {
   } else {
     abc.value = ''
   }
-  Fdate.value = new Date()
-  date.value =
-    Fdate.value.getDate() + '.' + (Fdate.value.getMonth() + 1) + '.' + Fdate.value.getFullYear()
+  date.value = new Date().toISOString().split('T')[0]
 
   weather.value =
     'Temperature: ' +
@@ -133,5 +131,10 @@ function Save() {
     weather: weather.value || 'sun',
   }
   rideStore.addRide(object)
+
+  notes.value = ''
+  distance.value = ''
+  mood.value = ''
+  time.value = ''
 }
 </script>

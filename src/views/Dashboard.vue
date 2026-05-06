@@ -1,7 +1,7 @@
 <template>
   <div v-if="loading">Am loading</div>
   <div v-else-if="error">{{ error }}</div>
-  <div v-else-if="data" class="grid grid-cols-3 justify-items-center items-center mt-10">
+  <div v-else-if="data" class="grid grid-cols-3 justify-items-center items-center mt-10 gap-y-10">
     <div
       class="justify-items-center items-center flex flex-col border-3 rounded-xl p-10 bg-blue-400 dark:bg-blue-900 border-cyan-400 dark:border-cyan-800"
     >
@@ -76,14 +76,31 @@
         </tr>
       </table>
     </div>
+
+    <div>
+      <PolarArea :data="MoodChartData" />
+    </div>
+
+    <div class="col-span-3">
+      <Bar :data="KmPerDayChartData" />
+    </div>
   </div>
 
   <div v-else>Mistake</div>
 </template>
 
 <script setup>
+import { ref, computed } from 'vue'
+import { useRidesStore } from '@/stores/rides'
+const rideStore = useRidesStore()
 import { useWeather } from '@/composables/Weather.js'
 import { onMounted } from 'vue'
+import { kmPerDay } from '@/data/ridesFromLast7Days'
+let ridesFrom7days = kmPerDay(rideStore.rides)
+import { Bar, PolarArea } from 'vue-chartjs'
+import Chart from 'chart.js/auto'
+import { AllMoods } from '@/data/AllMoods'
+let stats = AllMoods(rideStore.rides)
 
 let { data, prog, error, loading, fetchWeather } = useWeather()
 onMounted(() => {
@@ -119,4 +136,24 @@ function getWindImage(what) {
     return 'weak_wind.png'
   }
 }
+
+const KmPerDayChartData = computed(() => ({
+  labels: Object.keys(ridesFrom7days),
+  datasets: [
+    {
+      label: 'Km per day',
+      data: Object.values(ridesFrom7days),
+    },
+  ],
+}))
+
+const MoodChartData = computed(() => ({
+  labels: ['good', 'ok', 'bad'],
+  datasets: [
+    {
+      label: 'mood',
+      data: [stats.good, stats.ok, stats.bad],
+    },
+  ],
+}))
 </script>

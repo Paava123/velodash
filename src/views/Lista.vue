@@ -79,7 +79,8 @@
 
 <script setup>
 import { useRidesStore } from '@/stores/rides'
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+
 const rideStore = useRidesStore()
 
 let EditingID = ref(null)

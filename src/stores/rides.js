@@ -25,6 +25,7 @@ export const useRidesStore = defineStore(
       rides,
       totalKM,
       totalTime,
+
       addRide,
 
       deleteRide,
