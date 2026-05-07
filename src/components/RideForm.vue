@@ -89,9 +89,6 @@ onMounted(() => {
   fetchWeather()
 })
 
-let id = ref('')
-
-let Fdate = ref()
 let date = ref()
 let distance = ref('')
 let time = ref('')
