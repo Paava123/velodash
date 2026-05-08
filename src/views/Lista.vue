@@ -14,7 +14,7 @@
     >
       <!-- obj -->
 
-      <div v-if="value.id !== EditingID" class="flex flex-col">
+      <div v-if="value.id !== EditingID" class="flex flex-col dark:font-black">
         <p>{{ value.date }}</p>
         <p>{{ value.distanceKm }} - Km</p>
         <p>{{ value.durationMin }} - minutes</p>
