@@ -14,7 +14,7 @@
     >
       <!-- obj -->
 
-      <div v-if="value.id !== EditingID" class="flex flex-col dark:font-black">
+      <div v-if="value.id !== EditingID" class="flex flex-col dark:text-black">
         <p>{{ value.date }}</p>
         <p>{{ value.distanceKm }} - Km</p>
         <p>{{ value.durationMin }} - minutes</p>
@@ -25,7 +25,7 @@
 
       <!-- inputs -->
 
-      <div v-else class="flex flex-col">
+      <div v-else class="flex flex-col dark:text-black">
         <p>{{ value.date }}</p>
         <input
           type="number"
