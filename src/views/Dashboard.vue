@@ -1,5 +1,6 @@
 <template>
-  <div v-if="loading">Am loading</div>
+  <div v-if="loading">Am loading bitch
+  </div>
   <div v-else-if="error">{{ error }}</div>
   <div v-else-if="data" class="grid grid-cols-3 justify-items-center items-center mt-10 gap-y-10">
     <div
