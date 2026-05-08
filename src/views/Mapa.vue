@@ -37,6 +37,12 @@ onMounted(() => {
     { deep: true },
   )
 
+  let icon1 = L.icon({
+    iconUrl: '/icon/icon-red.png',
+    iconSize: [17, 29],
+    iconAnchor: [8.5, 29],
+  })
+
   map.on('click', (e) => {
     let obj = {
       cords: e.latlng,
@@ -45,7 +51,7 @@ onMounted(() => {
 
     path.value.push(obj)
 
-    const marker = L.marker(e.latlng, { draggable: true })
+    const marker = L.marker(e.latlng, { icon: icon1 }, { draggable: true })
       .addTo(map)
       .bindPopup('coordinates: lat: ' + e.latlng.lat + ' lng: ' + e.latlng.lng)
 
