@@ -20,7 +20,6 @@ function getLast14Days(rides) {
   ago.setDate(now.getDate() - 14)
 
   return rides.filter((r) => {
-    console.log(r.date)
     const rideDate = new Date(r.date)
     return rideDate >= ago && rideDate <= now
   })
