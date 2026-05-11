@@ -159,7 +159,9 @@ let totalDistance = computed(() => {
 })
 
 onMounted(() => {
-  map = L.map('map').setView([53.43074604526472, 14.555119556621193], 20)
+  map = L.map('map', {
+    doubleClickZoom: false,
+  }).setView([53.43074604526472, 14.555119556621193], 20)
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; OpenStreetMap contributors',
   }).addTo(map)

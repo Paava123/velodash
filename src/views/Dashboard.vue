@@ -59,7 +59,7 @@
         <tbody class="text-white">
           <tr class="border-t border-slate-700">
             <td
-              class="px-4 py-4 font-semibold bg-gray-300 border-gray-200 text-slate-900 dark:border-slate-700 dark:text-gray-300 dark:text-gray-300 dark:bg-slate-800/50"
+              class="px-4 py-4 font-semibold bg-gray-200 border-gray-200 text-slate-900 dark:border-slate-700 dark:text-gray-300 dark:text-gray-300 dark:bg-slate-800/50"
             >
               Weather
             </td>
@@ -69,15 +69,17 @@
                 <img
                   alt="temperature"
                   :src="`/icon/${getTempImage(value)}`"
-                  class="w-12 h-12 rounded-xl bg-slate-800 p-2"
+                  class="w-12 h-12 rounded-xl bg-gray-200 dark:bg-slate-800 p-2"
                 />
               </div>
             </td>
           </tr>
 
-          <tr class="border-t border-slate-700 hover:bg-slate-800/40 transition-colors">
+          <tr
+            class="border-t border-slate-700 hover:bg-slate-800/10 dark:hover:bg-slate-800/40 transition-colors"
+          >
             <td
-              class="px-4 py-4 font-semibold bg-gray-300 border-gray-200 text-slate-900 dark:border-slate-700 dark:text-gray-300 dark:text-gray-300 dark:bg-slate-800/50"
+              class="px-4 py-4 font-semibold bg-gray-200 border-gray-200 text-slate-900 dark:border-slate-700 dark:text-gray-300 dark:text-gray-300 dark:bg-slate-800/50"
             >
               Max Temp
             </td>
@@ -91,9 +93,11 @@
             </td>
           </tr>
 
-          <tr class="border-t border-slate-700 hover:bg-slate-800/40 transition-colors">
+          <tr
+            class="border-t border-slate-700 hover:bg-slate-800/10 dark:hover:bg-slate-800/40 transition-colors"
+          >
             <td
-              class="px-4 py-4 font-semibold bg-gray-300 border-gray-200 text-slate-900 dark:border-slate-700 dark:text-gray-300 dark:text-gray-300 dark:bg-slate-800/50"
+              class="px-4 py-4 font-semibold bg-gray-200 border-gray-200 text-slate-900 dark:border-slate-700 dark:text-gray-300 dark:text-gray-300 dark:bg-slate-800/50"
             >
               Min Temp
             </td>
@@ -107,9 +111,11 @@
             </td>
           </tr>
 
-          <tr class="border-t border-slate-700 hover:bg-slate-800/40 transition-colors">
+          <tr
+            class="border-t border-slate-700 hover:bg-slate-800/10 dark:hover:bg-slate-800/40 transition-colors"
+          >
             <td
-              class="px-4 py-4 font-semibold bg-gray-300 border-gray-200 text-slate-900 dark:border-slate-700 dark:text-gray-300 dark:text-gray-300 dark:bg-slate-800/50"
+              class="px-4 py-4 font-semibold bg-gray-200 border-gray-200 text-slate-900 dark:border-slate-700 dark:text-gray-300 dark:text-gray-300 dark:bg-slate-800/50"
             >
               Rain
             </td>
@@ -207,22 +213,22 @@ const MoodChartData = computed(() => ({
 }))
 
 function WeekDay(number) {
-  let day = (new Date().getDay() + number - 1) % 7
+  let day = (new Date().getDay() + number) % 7
   switch (day) {
     case 0:
-      return 'Monday'
-    case 1:
-      return 'Tuesday'
-    case 2:
-      return 'Wednesday'
-    case 3:
-      return 'Thursday'
-    case 4:
-      return 'Friday'
-    case 5:
-      return 'Saturday'
-    case 6:
       return 'Sunday'
+    case 1:
+      return 'Monday'
+    case 2:
+      return 'Tuesday'
+    case 3:
+      return 'Wednesday'
+    case 4:
+      return 'Thursday'
+    case 5:
+      return 'Friday'
+    case 6:
+      return 'Saturday'
     default:
       return day
   }

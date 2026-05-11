@@ -19,7 +19,7 @@ let path = props.points.map((p) => p.cords)
 let map = null
 
 onMounted(() => {
-  map = L.map(mapContainer.value).setView(path[0], 15)
+  map = L.map(mapContainer.value).setView(path[path.length - 1], 15)
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; OpenStreetMap contributors',
   }).addTo(map)
